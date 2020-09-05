@@ -1,3 +1,3 @@
 ### This is a freecodecamp project: [JavaScript Algorithms and Data Structures Projects: Caesars Cipher](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/caesars-cipher)
 
-### I created a function that accepts words and shift the letter of each word forward by 13 places and, finally, returns the resulting words. Take a look at the code!
+### I created a function that accepts words and shifts the letter of each word forward by 13 places and, finally, returns the resulting words. Take a look at the code!
