@@ -1,4 +1,6 @@
 function rot13(str) {
+    if (!str) return "Please enter an ROT13 cipher";
+
     const alphabets = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
     const characterArr = str.split("");
@@ -31,12 +33,16 @@ function rot13(str) {
             // The last index of a 26-index-long array is 25: (26 -25)
             const lastIndexOfAlphabet = alphabets.length - 1; 
 
-            // Get the distance between the lastIndex and the looped over index
-            const indexDifference = lastIndexOfAlphabet - (indicesOfStrings[i] - 1) // 25 -11 = 14
-
-            const indexOfGivenStr = 13 - indexDifference; // 13 - 14 *error*
-
-            ROT13_STRING_ARR.push(alphabets[indexOfGivenStr])
+            // Since an index greater than 25 is more than the length of the alphabets array...
+            // ...get the distance between the lastIndex and the looped over index and...
+            const indexDifference = lastIndexOfAlphabet - (indicesOfStrings[i])
+            
+            // ...get the number of positions to be counted from the top of the alphabets array to complete 13 letters shifted forward
+            const indexOfGivenStr = 13 - indexDifference;
+            // -1 is added because when using indexOfGivenStr, the number of characters counted will be 1 over the required number
+            // This is due to the zero-based behaviour of arrays.
+            // [ Ex: 10 letters forwarded from "Z" is "J", but the resulting expressions is alphabets[9], not alphabets[10] ]
+            ROT13_STRING_ARR.push(alphabets[indexOfGivenStr - 1])
         } 
         else if (ROT13_STRING_INDEX == 25) {
             // Since ROT13_STRING_INDEX is 25, the resulting letter is "Z",
@@ -52,4 +58,5 @@ function rot13(str) {
     return ROT13_STRING_ARR.join("") // the ROT13_STRING_ARR contains letters and spaces.
 }
 
-rot13("serr cvmmn")
+const rot13Str = rot13("serr cvmmn") 
+console.log(rot13Str) // Free Pizza
